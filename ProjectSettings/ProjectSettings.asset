@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 15
-  productGUID: 00000000000000000000000000000000
+  productGUID: 4c39cc5c231bee7429e73b0511c5824f
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -708,7 +708,7 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   cloudProjectId: 8383a0a4-0fb6-44f1-b605-f8abf8001d58
   framebufferDepthMemorylessMode: 0
-  projectName: Space Shooter
+  projectName: RPG-Game
   organizationId: black-cold
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
