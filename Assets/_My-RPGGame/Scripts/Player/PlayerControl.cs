@@ -20,7 +20,7 @@ namespace Scripts.Player
             IsDie = false;
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
             newMove = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
             transform.Translate(moveSpeed * Time.deltaTime * newMove, Space.World);
