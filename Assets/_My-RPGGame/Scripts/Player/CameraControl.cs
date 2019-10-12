@@ -32,7 +32,7 @@ namespace Scripts.Player
 //                transform.Translate(Time.deltaTime * moveSpeed * transform.forward);
 //            }
 //        }
-        private void Update()
+        private void LateUpdate()
         {
             transform.position = Vector3.Lerp(transform.position, player.position, moveValue);
         }

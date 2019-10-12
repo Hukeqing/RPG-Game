@@ -31,7 +31,9 @@ namespace Scripts.Player
             var cameraMoveRay = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(cameraMoveRay, out var hit, Mathf.Infinity, 1 << 8))
             {
-                transform.LookAt(hit.point);
+                var targetPosition = hit.point;
+                targetPosition.y = transform.position.y;
+                transform.LookAt(targetPosition);
             }
         }
 
