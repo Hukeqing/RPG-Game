@@ -23,7 +23,8 @@ namespace Scripts.Player
 
         private void FixedUpdate()
         {
-            ApplyDamage(1);
+            if (IsDie) return;
+//            ApplyDamage(1);
             newMove = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
             transform.Translate(moveSpeed * Time.deltaTime * newMove, Space.World);
 
@@ -48,7 +49,7 @@ namespace Scripts.Player
 
         public void RestartLevel()
         {
-            Debug.Log(2);
+//            Debug.Log(2);
         }
     }
 }

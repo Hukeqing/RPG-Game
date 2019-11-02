@@ -11,6 +11,9 @@ namespace Scripts.Player
         public float fireCoolDown = 0.15f;
         public float lineCoolDown = 0.05f;
 
+        private AudioSource fireClip;
+        private PlayerControl pc;
+        
         public GameObject fireLight;
         public ParticleSystem fireEffect;
         public GameObject hitEffect;
@@ -24,6 +27,8 @@ namespace Scripts.Player
         private void Start()
         {
             fireLine = firePoint.GetComponent<LineRenderer>();
+            fireClip = GetComponent<AudioSource>();
+            pc = GetComponent<PlayerControl>();
             fireLine.enabled = false;
             fireLight.SetActive(false);
             nextFire = 0;
@@ -32,7 +37,7 @@ namespace Scripts.Player
 
         private void Update()
         {
-            if (Input.GetMouseButtonDown(0) && Time.time > nextFire)
+            if (Input.GetMouseButtonDown(0) && Time.time > nextFire && !pc.IsDie)
             {
                 nextFire = Time.time + fireCoolDown;
 
@@ -60,7 +65,10 @@ namespace Scripts.Player
 
                 fireLine.enabled = true;
                 fireEffect.transform.position = firePosition;
+                fireEffect.Stop();
                 fireEffect.Play();
+                fireClip.Stop();
+                fireClip.Play();
                 fireLight.SetActive(true);
             }
 
