@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security.Cryptography;
 using UnityEngine;
 
 namespace Scripts.Player
@@ -8,8 +9,12 @@ namespace Scripts.Player
         public Transform firePoint;
         public float maxFireDistant = 100;
         public float fireCoolDown = 0.15f;
-        public float lineCoolDown = 0.1f;
+        public float lineCoolDown = 0.05f;
 
+        public GameObject fireLight;
+        public ParticleSystem fireEffect;
+        public GameObject hitEffect;
+        
         private LineRenderer fireLine;
         private Ray fireRay;
         private RaycastHit fireTarget;
@@ -20,6 +25,7 @@ namespace Scripts.Player
         {
             fireLine = firePoint.GetComponent<LineRenderer>();
             fireLine.enabled = false;
+            fireLight.SetActive(false);
             nextFire = 0;
             lineDisableTime = 0;
         }
@@ -34,12 +40,18 @@ namespace Scripts.Player
                 
                 var firePosition = firePoint.position;
                 fireLine.enabled = false;
+                fireLight.SetActive(false);
                 fireLine.SetPosition(0, firePosition);
                 fireRay.origin = firePosition;
                 fireRay.direction = firePoint.forward;
                 if (Physics.Raycast(fireRay, out fireTarget, maxFireDistant))
                 {
                     fireLine.SetPosition(1, fireTarget.point);
+                    var newEffect = Instantiate(hitEffect, fireTarget.point, transform.rotation);
+                    newEffect.transform.LookAt(transform);
+                    newEffect.GetComponent<ParticleSystem>().Play();
+                    Destroy(newEffect, 0.5f);
+                    // TODO... Apply Damage
                 }
                 else
                 {
@@ -47,6 +59,9 @@ namespace Scripts.Player
                 }
 
                 fireLine.enabled = true;
+                fireEffect.transform.position = firePosition;
+                fireEffect.Play();
+                fireLight.SetActive(true);
             }
 
             if (lineDisableTime > 0)
@@ -55,6 +70,7 @@ namespace Scripts.Player
                 if (lineDisableTime <= 0)
                 {
                     fireLine.enabled = false;
+                    fireLight.SetActive(false);
                 }
             }
         }
