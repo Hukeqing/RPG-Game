@@ -1,9 +1,10 @@
 ﻿using System;
+using Scripts.Unit;
 using UnityEngine;
 
 namespace Scripts.Player
 {
-    public class PlayerControl : MonoBehaviour
+    public class PlayerControl : Health
     {
         public float moveSpeed;
 
@@ -22,6 +23,7 @@ namespace Scripts.Player
 
         private void FixedUpdate()
         {
+            ApplyDamage(1);
             newMove = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
             transform.Translate(moveSpeed * Time.deltaTime * newMove, Space.World);
 
@@ -42,6 +44,11 @@ namespace Scripts.Player
             if (IsDie) return;
             IsDie = true;
             animator.SetTrigger(DieHash);
+        }
+
+        public void RestartLevel()
+        {
+            Debug.Log(2);
         }
     }
 }
