@@ -1,5 +1,7 @@
 # RPG-Game
 
+具体视频教程请前往[B站](https://space.bilibili.com/175413312/channel/detail?cid=91205)
+
 一个简单的RPG游戏，可以在release页面下载不同的版本
 
 FAQ:[Download](https://github.com/Hukeqing/RPG-Game/releases/download/V1.0/FAQ.rar)
