@@ -7,9 +7,9 @@ namespace Scripts.Unit
     {
         public int maxHealth = 100;
 
-        private int curHealth;
+        public int curHealth;
 
-        private void Start()
+        protected void HealthStart()
         {
             curHealth = maxHealth;
         }

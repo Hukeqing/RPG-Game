@@ -97,21 +97,21 @@ NavMeshSettings:
   m_BuildSettings:
     serializedVersion: 2
     agentTypeID: 0
-    agentRadius: 0.5
+    agentRadius: 1.2
     agentHeight: 2
-    agentSlope: 45
-    agentClimb: 0.4
+    agentSlope: 10
+    agentClimb: 0.2
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     minRegionArea: 2
     manualCellSize: 0
-    cellSize: 0.16666667
+    cellSize: 0.4
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 0d3d7a1a929fb5e4c9987020d615bdda, type: 2}
 --- !u!1 &189729134
 GameObject:
   m_ObjectHideFlags: 0
@@ -161,7 +161,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!64 &853611343
 MeshCollider:
@@ -360,6 +360,7 @@ GameObject:
   - component: {fileID: 1364804896}
   - component: {fileID: 1364804897}
   - component: {fileID: 1364804898}
+  - component: {fileID: 1364804899}
   m_Layer: 13
   m_Name: Player
   m_TagString: Untagged
@@ -380,6 +381,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 1000
+  curHealth: 0
   moveSpeed: 5
 --- !u!136 &1364804895
 CapsuleCollider:
@@ -526,6 +528,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1364804899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1364804893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 427feca37af8fae459b4b2258e0b684b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 1000
+  curHealth: 0
 --- !u!1 &1364804945
 GameObject:
   m_ObjectHideFlags: 0
@@ -1243,6 +1259,9 @@ GameObject:
   - component: {fileID: 1773467205}
   - component: {fileID: 1763842465}
   - component: {fileID: 1773365862}
+  - component: {fileID: 1773365863}
+  - component: {fileID: 1773365864}
+  - component: {fileID: 1773365866}
   m_Layer: 0
   m_Name: Hellephant
   m_TagString: Untagged
@@ -1264,8 +1283,57 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackRange: 3
   attackCoolDown: 1
-  attackDamage: 500
+  attackDamage: 300
   player: {fileID: 1365170467}
+--- !u!195 &1773365863
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1773365861}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 1.2
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &1773365864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1773365861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6e9ed2c978e16d40926f311284340e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1365170467}
+--- !u!136 &1773365866
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1773365861}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 1.2
+  m_Height: 3.8467908
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.72339463, z: 0}
 --- !u!4 &1773467203
 Transform:
   m_ObjectHideFlags: 0

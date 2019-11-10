@@ -19,6 +19,8 @@ namespace Scripts.Player
         {
             animator = GetComponent<Animator>();
             IsDie = false;
+            HealthStart();
+//            curHealth = maxHealth;
         }
 
         private void FixedUpdate()
