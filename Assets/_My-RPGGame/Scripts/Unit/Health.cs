@@ -7,20 +7,16 @@ namespace Scripts.Unit
     {
         public int maxHealth = 100;
 
-        public int curHealth;
-
-        protected void HealthStart()
-        {
-            curHealth = maxHealth;
-        }
-
+        protected int curHealth;
+        
         public void ApplyDamage(int damage)
         {
             curHealth -= damage;
             if (curHealth < 0)
             {
-                GetComponent<PlayerControl>().Die();
+//                GetComponent<PlayerControl>().Die();
 //                Destroy(gameObject);
+                SendMessage("Die");
             }
         }
     }

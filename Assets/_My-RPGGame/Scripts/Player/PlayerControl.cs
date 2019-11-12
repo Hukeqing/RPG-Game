@@ -19,7 +19,7 @@ namespace Scripts.Player
         {
             animator = GetComponent<Animator>();
             IsDie = false;
-            HealthStart();
+            curHealth = maxHealth;
 //            curHealth = maxHealth;
         }
 
@@ -34,7 +34,7 @@ namespace Scripts.Player
 
             // ReSharper disable once PossibleNullReferenceException
             var cameraMoveRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(cameraMoveRay, out var hit, Mathf.Infinity, 1 << 8))
+            if (Physics.Raycast(cameraMoveRay, out var hit, Mathf.Infinity, 1 << 8 | 1 << 17))
             {
                 var targetPosition = hit.point;
                 targetPosition.y = transform.position.y;

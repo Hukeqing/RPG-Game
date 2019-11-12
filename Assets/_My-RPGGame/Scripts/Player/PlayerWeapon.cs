@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Security.Cryptography;
+using Scripts.Unit;
 using UnityEngine;
 
 namespace Scripts.Player
@@ -10,6 +11,8 @@ namespace Scripts.Player
         public float maxFireDistant = 100;
         public float fireCoolDown = 0.15f;
         public float lineCoolDown = 0.05f;
+
+        public int damage = 10;
 
         private AudioSource fireClip;
         private PlayerControl pc;
@@ -56,7 +59,12 @@ namespace Scripts.Player
                     newEffect.transform.LookAt(transform);
                     newEffect.GetComponent<ParticleSystem>().Play();
                     Destroy(newEffect, 0.5f);
-                    // TODO... Apply Damage
+                    
+                    if (fireTarget.collider.gameObject.layer == 17)
+                    {
+                        var enemyHealth = fireTarget.collider.GetComponent<Health>();
+                        enemyHealth.ApplyDamage(damage);
+                    }
                 }
                 else
                 {
