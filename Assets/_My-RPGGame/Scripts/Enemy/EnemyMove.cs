@@ -11,15 +11,11 @@ namespace Scripts.Enemy
     {
         public Transform player;
         public float sinkingSpeed = 2;
-        
-        public bool IsDie { get; private set; }
-        
+
         private bool isStartSinking;
         private NavMeshAgent navMeshAgent;
-        private Animator animator;
         private PlayerControl playerControl;
         private static readonly int IsMove = Animator.StringToHash("IsMove");
-        private static readonly int DieHash = Animator.StringToHash("Die");
 
         private void Start()
         {
@@ -50,12 +46,6 @@ namespace Scripts.Enemy
             }
         }
 
-        public void Die()
-        {
-            if (IsDie) return;
-            IsDie = true;
-            animator.SetTrigger(DieHash);
-        }
 
         public void StartSinking()
         {

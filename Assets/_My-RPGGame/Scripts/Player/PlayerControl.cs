@@ -1,25 +1,27 @@
 ﻿using System;
 using Scripts.Unit;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Scripts.Player
 {
     public class PlayerControl : Health
     {
         public float moveSpeed;
-
-        public bool IsDie { get; private set; }
+        
+        public Image playerHealthImage;
+        public Image enemyHealthImage;
 
         private Vector3 newMove;
-        private Animator animator;
         private static readonly int IsMoveHash = Animator.StringToHash("IsMove");
-        private static readonly int DieHash = Animator.StringToHash("Die");
 
         private void Start()
         {
             animator = GetComponent<Animator>();
             IsDie = false;
             curHealth = maxHealth;
+            playerHealth = playerHealthImage;
+            enemyHealth = enemyHealthImage;
 //            curHealth = maxHealth;
         }
 
@@ -42,13 +44,9 @@ namespace Scripts.Player
             }
         }
 
-        public void Die()
-        {
-            if (IsDie) return;
-            IsDie = true;
-            animator.SetTrigger(DieHash);
-        }
-
+//        public void Die()
+//        {
+//        }
         public void RestartLevel()
         {
 //            Debug.Log(2);
