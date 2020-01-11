@@ -14,6 +14,8 @@ namespace Scripts.Unit
         public AudioSource audioControl;
 
         public bool isPlayer = false;
+
+        private PlayerHurtEffect playerHurtEffect;
         
         protected int curHealth;
         protected Animator animator;
@@ -45,12 +47,15 @@ namespace Scripts.Unit
             if (isPlayer)
             {
                 playerHealth.fillAmount = (float)curHealth / maxHealth;
+                if (playerHurtEffect == null)
+                    playerHurtEffect = GameObject.Find("PlayerHurtEffect").GetComponent<PlayerHurtEffect>();
+                playerHurtEffect.Hurt();
             }
             else
             {
                 enemyHealth.fillAmount = (float) curHealth / maxHealth;
             }
-        }       
+        }
         public void Die()
         {
         }
