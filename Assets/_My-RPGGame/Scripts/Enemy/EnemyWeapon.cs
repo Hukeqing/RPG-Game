@@ -12,7 +12,7 @@ namespace Scripts.Enemy
         public int attackDamage;
         public Transform player;
 
-        private EnemyMove EM;
+        private EnemyMove em;
         private float nextAttack;
         private Health playerHealth;
 
@@ -20,14 +20,14 @@ namespace Scripts.Enemy
         {
             nextAttack = Time.time + attackCoolDown;
             playerHealth = player.GetComponent<Health>();
-            EM = GetComponent<EnemyMove>();
+            em = GetComponent<EnemyMove>();
         }
 
         private void Update()
         {
 //            Debug.Log(Vector3.Distance(player.position, transform.position));
             if (!(nextAttack <= Time.time) || !(Vector3.Distance(player.position, transform.position) <= attackRange) ||
-                EM.IsDie) return;
+                em.IsDie) return;
             nextAttack = Time.time + attackCoolDown;
             playerHealth.ApplyDamage(attackDamage);
 //                Debug.Log(1);
