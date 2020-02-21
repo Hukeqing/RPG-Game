@@ -54,5 +54,9 @@ namespace Scripts.Enemy
             GetComponent<Collider>().enabled = false;
             Destroy(gameObject, 3);
         }
+
+        public void Die()
+        {
+        }
     }
 }

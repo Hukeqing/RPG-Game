@@ -56,9 +56,5 @@ namespace Scripts.Unit
                 enemyHealth.fillAmount = (float) curHealth / maxHealth;
             }
         }
-        public void Die()
-        {
-        }
-
     }
 }
